@@ -57,8 +57,62 @@ The results should be paginated if more than 20 items returned by the query, oth
 - Deploy the application
 - Think about future improvements
 
+# Database structure
 
+### media table
 
+|      Column      |              Type              | Collation | Nullable |              Default              |
+|------------------|--------------------------------|-----------|----------|-----------------------------------|
+|id                | bigint                         |           | not null | nextval('media_id_seq'::regclass) |
+|tmdb_id           | integer                        |           | not null |                                   |
+|media_type        | character varying              |           | not null |                                   |
+|adult             | boolean                        |           | not null | false                             |
+|release_date      | date                           |           |          |                                   |
+|title             | character varying              |           |          |                                   |
+|original_title    | character varying              |           |          |                                   |
+|original_language | character varying              |           |          |                                   |
+|overview          | text                           |           |          |                                   |
+|poster_path       | character varying              |           |          |                                   |
+|vote_average      | double precision               |           |          |                                   |
+|vote_count        | integer                        |           |          |                                   |
+|popularity        | double precision               |           |          |                                   |
+|backdrop_path     | character varying              |           |          |                                   |
+|created_at        | timestamp(6) without time zone |           | not null |                                   |
+|updated_at        | timestamp(6) without time zone |           | not null |                                   |
+
+Indexes:
+Indexes:
+* "media_pkey" PRIMARY KEY, btree (id)
+* "custom_uniq_index_2" UNIQUE, btree (tmdb_id, media_type)
+* "index_media_on_tmdb_id" btree (tmdb_id)
+
+### genres table
+
+|Column     |              Type              | Collation | Nullable |              Default               |
+|-----------|--------------------------------|-----------|----------|------------------------------------|
+|id         | bigint                         |           | not null | nextval('genres_id_seq'::regclass) |
+|tmdb_id    | integer                        |           | not null |                                    |
+|name       | character varying              |           | not null |                                    |
+|created_at | timestamp(6) without time zone |           | not null |                                    |
+|updated_at | timestamp(6) without time zone |           | not null |                                    |
+
+Indexes:
+ * "genres_pkey" PRIMARY KEY, btree (id)
+ * "index_genres_on_tmdb_id" btree (tmdb_id)
+
+### media_genres table
+
+|    Column     |              Type              | Collation | Nullable |                 Default                  |
+|---------------|--------------------------------|-----------|----------|------------------------------------------|
+|id             | bigint                         |           | not null | nextval('media_genres_id_seq'::regclass) |
+|tmdb_medium_id | integer                        |           | not null |                                          |
+|tmdb_genre_id  | integer                        |           | not null |                                          |
+|created_at     | timestamp(6) without time zone |           | not null |                                          |
+|updated_at     | timestamp(6) without time zone |           | not null |                                          |
+
+Indexes:
+* "media_genres_pkey" PRIMARY KEY, btree (id)
+* "custom_uniq_index_1" UNIQUE, btree (tmdb_medium_id, tmdb_genre_id)
 
 # Getting started
 
