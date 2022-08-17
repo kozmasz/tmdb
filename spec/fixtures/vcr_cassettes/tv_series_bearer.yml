@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/tv?include_adult=false&language=hu-HU&page=9&query=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Authorization:
+      - Bearer secret_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.themoviedb.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 19 Aug 2022 20:31:15 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=600
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 d1059a03249ee23f5bc6527edaec7ed2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BUD50-C1
+      X-Amz-Cf-Id:
+      - m74nORNARJPaviDvR9A0U7Zcu9TAwubBTxnrwB8id6MXOutuH0rQuw==
+      Age:
+      - '215'
+    body:
+      encoding: UTF-8
+      string: '{"page":9,"results":[{"backdrop_path":null,"first_air_date":"2015-05-05","genre_ids":[99],"id":156789,"name":"Die Diät-Tester","origin_country":["DE"],"original_language":"de","original_name":"Die Diät-Tester","overview":"","popularity":0.6,"poster_path":null,"vote_average":0,"vote_count":0}],"total_pages":9,"total_results":161}'
+  recorded_at: Fri, 19 Aug 2022 20:34:50 GMT
+recorded_with: VCR 6.1.0

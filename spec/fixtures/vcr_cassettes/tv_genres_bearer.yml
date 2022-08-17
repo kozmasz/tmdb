@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/genre/tv/list?language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Authorization:
+      - Bearer secret_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.themoviedb.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 19 Aug 2022 16:54:02 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - f174753e0b6ae51974a3329cdfafc5b506ab3710
+      X-Memc-Age:
+      - '12282'
+      X-Memc-Expires:
+      - '4932'
+      Etag:
+      - W/"c9414e40a9e909888e1e74fd911cf7d1"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 bef2aa0a3399e7cf217d61d0ac883834.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BUD50-C1
+      X-Amz-Cf-Id:
+      - 1kdq2hDpVtmd2jMIY0tAAjXO4-vhUejf1bPLyUriJ3X6ox6oW0Gpfw==
+      Age:
+      - '9958'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"genres":[{"id":10759,"name":"Action & Adventure"},{"id":16,"name":"Animation"}]}'
+  recorded_at: Fri, 19 Aug 2022 19:40:00 GMT
+recorded_with: VCR 6.1.0

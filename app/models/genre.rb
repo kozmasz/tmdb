@@ -18,4 +18,9 @@ class Genre < ApplicationRecord
 
   has_many :media_genres, primary_key: :tmdb_id, foreign_key: :tmdb_genre_id, dependent: :destroy
   has_many :media, through: :media_genres
+
+  # CLASS METHODS
+
+  class << self
+  end
 end

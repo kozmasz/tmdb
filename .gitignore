@@ -31,6 +31,6 @@
 /config/master.key
 
 # Custom
-.env
+.envrc
 db/schema.rb
 

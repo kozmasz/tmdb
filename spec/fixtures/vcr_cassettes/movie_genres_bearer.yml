@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/genre/movie/list?language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Authorization:
+      - Bearer secret_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.themoviedb.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - af4426908218dad356a942000911b15f14e85c85
+      X-Memc-Age:
+      - '3160'
+      X-Memc-Expires:
+      - '11297'
+      Date:
+      - Fri, 19 Aug 2022 17:04:45 GMT
+      Cache-Control:
+      - public, max-age=28800
+      Etag:
+      - W/"98d6f4fb3a0e0c77544a7277f32baebb"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 ea5596dd88f15ba5d3f5b74a7ae8d49e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BUD50-C1
+      X-Amz-Cf-Id:
+      - WRXQ2yJCbtWjluOww4XRw0zrc5E2kEcSf0WMjpl8Ah0Lzeg_2nZRoQ==
+      Age:
+      - '11240'
+    body:
+      encoding: UTF-8
+      string: '{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"}]}'
+  recorded_at: Fri, 19 Aug 2022 20:12:05 GMT
+recorded_with: VCR 6.1.0

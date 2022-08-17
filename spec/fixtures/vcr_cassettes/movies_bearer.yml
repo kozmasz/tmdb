@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?include_adult=false&language=hu-HU&page=59&query=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Authorization:
+      - Bearer secret_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.themoviedb.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 19 Aug 2022 20:04:02 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=600
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 893fede1f337b016b21f4e67bd00c72e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - BUD50-C1
+      X-Amz-Cf-Id:
+      - vxxoywY6YTJY29q-mhEUVzTTgwEa0ZSdlpkTF2_vvvKjFck5kWETJQ==
+    body:
+      encoding: UTF-8
+      string: '{"page":59,"results":[{"adult":false,"backdrop_path":"/7Lifoyyagv3gJ9WuyN9iqrmuu8R.jpg","genre_ids":[18,9648],"id":104343,"original_language":"ja","original_title":"東京战争戦後秘話","overview":"","popularity":0.666,"poster_path":"/x9Zm80FhJEH57yZ6t7S26KUuNJo.jpg","release_date":"1970-06-27","title":"東京战争戦後秘話","video":false,"vote_average":5.9,"vote_count":18}],"total_pages":59,"total_results":1161}'
+  recorded_at: Fri, 19 Aug 2022 20:04:02 GMT
+recorded_with: VCR 6.1.0
