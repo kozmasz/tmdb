@@ -22,5 +22,17 @@ class Genre < ApplicationRecord
   # CLASS METHODS
 
   class << self
+    def all_from_api
+      genres = (TmdbClient::Genre::Movie.all + TmdbClient::Genre::Tv.all).uniq
+      genres.map do |genre|
+        genre["tmdb_id"] = genre.delete("id")
+        genre
+      end
+    end
+
+    def seed_data!
+      all_from_api.each { |genre_attrs| find_or_create_by(genre_attrs) }
+    end
+
   end
 end

@@ -16,8 +16,10 @@ class TmdbClient
 
     def get(params = {}, &block)
       url = url_with(params)
-      Rails.logger.info("GET #{url}")
-      response = Rails.cache.fetch(url) { Net::HTTP.get_response(URI(url), headers) }
+      response = Rails.cache.fetch(url) do
+        Rails.logger.info("GET #{url}")
+        Net::HTTP.get_response(URI(url), headers)
+      end
       response_handler(response, &block)
     rescue => e
       Rails.logger.debug(e)
@@ -28,6 +30,7 @@ class TmdbClient
       body = JSON.parse(response.body).with_indifferent_access
       case response.code
       when "200"
+        body.merge!(success: true)
         block_given? ? yield(body) : body
       when "401", "404"
         body

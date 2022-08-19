@@ -4,12 +4,6 @@ class TmdbClient::Search::Movie < TmdbClient
       "search/movie"
     end
 
-    def where(params = {})
-      get(params) do |response_body|
-        response_body
-      end
-    end
-
     def default_params
       super.merge(language: "en-US", page: 1, include_adult: false)
     end
