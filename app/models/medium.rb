@@ -28,7 +28,7 @@ class Medium < ApplicationRecord
 
   MANDATORY_ATTRIBUTES = [
     "tmdb_id", "media_type", "release_date", "title", "original_title",
-    "original_language", "overview", "poster_path", "vote_average", "vote_count"
+    "original_language", "overview", "vote_average", "vote_count"
   ].freeze
 
   WHITELISTED_PARAMS = (MANDATORY_ATTRIBUTES + ["genre_ids", "popularity", "backdrop_path", "original_name", "name", "first_air_date"]).freeze
@@ -45,10 +45,36 @@ class Medium < ApplicationRecord
   # CLASS METHODS
 
   class << self
-    def normalize_response hash
-      hash["tmdb_id"] = hash.delete("id")
-      hash.slice(*WHITELISTED_PARAMS)
+    def find_or_create_from_api hashes
+      Array.wrap(hashes).map do |hash|
+        hash["tmdb_id"] = hash.delete("id")
+        hash.slice!(*WHITELISTED_PARAMS)
+        genre_ids = hash.delete("genre_ids")
+        transaction do
+          movie = create_with(hash).find_or_create_by(tmdb_id: hash["tmdb_id"])
+          movie.genre_ids = genre_ids
+          movie
+        end
+      end
     end
   end
 
+  # INSTANCE_METHODS
+
+  # size can be: [:w92, :w154, :w185, :w342, :w500, :w780, :original]
+  def poster_url(size = :original)
+    if poster_path
+      [ Configuration.instance.secure_base_image_url, size, poster_path ].join
+    else
+      "no-image-icon.png"
+    end
+  end
+
+  def title_with_year
+    "#{title} (#{year})"
+  end
+
+  def year
+    release_date.year
+  end
 end

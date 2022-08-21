@@ -1,0 +1,17 @@
+.row.p-3
+  .col-md-2
+    = image_tag(medium.poster_url(:w154), size: 154, class: "rounded")
+  .col-md-10
+    .row
+      .col-auto
+        %h3= medium.title_with_year
+      .col-auto
+        %i.bi.bi-star-fill{style: "color: yellow;"}
+        %strong= medium.vote_average
+        %br
+        %i.bi.bi-person-fill
+        = number_to_human(medium.vote_count, :format => '%n%u', :units => { :thousand => 'K' })
+
+    .row
+      %p= medium.overview
+%hr

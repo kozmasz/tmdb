@@ -1,0 +1,17 @@
+.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+  %main.px-3.bg-info.rounded
+    %h1 Welcome.
+    %p.lead Millions of movies, TV shows and people to discover. Explore now.
+
+    .row.justify-content-md-center
+      .col-md-6
+        .input-group.mb-3
+          %input.form-control{"aria-label" => "Text input with dropdown button", placeholder: "Search for movies, TV shows and people", :type => "text"}
+          %button.btn.btn-outline-secondary.dropdown-toggle{id: "media-type", type: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"} Select...
+          %ul.dropdown-menu.dropdown-menu-end{"aria-labelledby" => "media-type"}
+            %li
+              %a.dropdown-item{:href => "#", value: "movie"} Movie
+            %li
+              %a.dropdown-item{:href => "#", value: "tv_show"} TV show
+            %li
+              %a.dropdown-item{:href => "#", value: "person"} Person

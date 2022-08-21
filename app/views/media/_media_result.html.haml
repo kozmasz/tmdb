@@ -1,0 +1,8 @@
+.cover-container.d-flex.w-100.h-100.p-3.flex-column
+  %main.px-3.bg-info.rounded
+    %br
+    .h-100.d-flex.align-items-center.justify-content-center
+      = paginate @media
+    = render partial: "medium", :collection => @media
+    .h-100.d-flex.align-items-center.justify-content-center
+      = paginate @media

@@ -24,7 +24,6 @@ RSpec.describe Medium, type: :model do
     it { is_expected.to validate_presence_of :original_title }
     it { is_expected.to validate_presence_of :original_language }
     it { is_expected.to validate_presence_of :overview }
-    it { is_expected.to validate_presence_of :poster_path }
     it { is_expected.to validate_presence_of :vote_average }
     it { is_expected.to validate_presence_of :vote_count }
   end
