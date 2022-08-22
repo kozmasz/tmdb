@@ -20,9 +20,4 @@
 #  updated_at        :datetime         not null
 #
 class Medium::Movie < Medium
-
-  # CLASS METHODS
-
-  class << self
-  end
 end

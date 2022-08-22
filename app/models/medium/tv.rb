@@ -25,9 +25,4 @@ class Medium::Tv < Medium
   alias_attribute :original_name,  :original_title
   alias_attribute :name,           :title
   alias_attribute :first_air_date, :release_date
-
-  # CLASS METHODS
-
-  class << self
-  end
 end

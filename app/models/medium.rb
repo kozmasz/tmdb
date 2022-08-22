@@ -31,7 +31,7 @@ class Medium < ApplicationRecord
     "original_language", "overview", "vote_average", "vote_count"
   ].freeze
 
-  WHITELISTED_PARAMS = (MANDATORY_ATTRIBUTES + ["genre_ids", "popularity", "backdrop_path", "original_name", "name", "first_air_date"]).freeze
+  WHITELISTED_PARAMS = (MANDATORY_ATTRIBUTES + ["genre_ids", "popularity", "backdrop_path", "original_name", "name", "first_air_date", "poster_path"]).freeze
 
   # VALIDATIONS
 
@@ -57,6 +57,20 @@ class Medium < ApplicationRecord
         end
       end
     end
+
+    def search_and_create query_params = {}
+      search_class = "TmdbClient::Search::#{class_name}".constantize
+      response = search_class.get(query_params)
+      if response[:success]
+        { media: find_or_create_from_api(response[:results]), total_count: response[:total_results] }
+      else
+        { media: [], total_count: 0 }
+      end
+    end
+
+    def class_name
+      name.demodulize
+    end
   end
 
   # INSTANCE_METHODS
@@ -75,6 +89,10 @@ class Medium < ApplicationRecord
   end
 
   def year
-    release_date.year
+    release_date.try(:year)
+  end
+
+  def genre_names
+    genres.pluck(:name).join(", ")
   end
 end

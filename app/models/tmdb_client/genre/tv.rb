@@ -5,9 +5,7 @@ class TmdbClient::Genre::Tv < TmdbClient
     end
 
     def all(params = {})
-      get(params) do |response_body|
-        response_body[:genres]
-      end
+      get(params)[:genres]
     end
 
     def default_params

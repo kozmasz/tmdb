@@ -14,13 +14,13 @@ class TmdbClient
       "#{url}?#{safe_params(params).to_query}"
     end
 
-    def get(params = {}, &block)
+    def get(params = {})
       url = url_with(params)
       response = Rails.cache.fetch(url) do
         Rails.logger.info("GET #{url}")
         Net::HTTP.get_response(URI(url), headers)
       end
-      response_handler(response, &block)
+      response_handler(response)
     rescue => e
       Rails.logger.debug(e)
       { status_code: 500, status_message: "Something went wrong.", success: false }
@@ -31,7 +31,6 @@ class TmdbClient
       case response.code
       when "200"
         body.merge!(success: true)
-        block_given? ? yield(body) : body
       when "401", "404"
         body
       else

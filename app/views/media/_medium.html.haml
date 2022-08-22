@@ -2,7 +2,7 @@
   .col-md-2
     = image_tag(medium.poster_url(:w154), size: 154, class: "rounded")
   .col-md-10
-    .row
+    .row.-p1
       .col-auto
         %h3= medium.title_with_year
       .col-auto
@@ -12,6 +12,10 @@
         %i.bi.bi-person-fill
         = number_to_human(medium.vote_count, :format => '%n%u', :units => { :thousand => 'K' })
 
-    .row
+    .row.p-1
+      .col-auto
+        %i.bi.bi-person-workspace
+        %strong= medium.genre_names
+    .row.p-3
       %p= medium.overview
 %hr

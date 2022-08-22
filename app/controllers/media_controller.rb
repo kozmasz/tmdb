@@ -1,12 +1,23 @@
 class MediaController < ApplicationController
+  before_action :set_media_type, only: [:index]
+
   def index
-    response = TmdbClient::Search::Movie.get(query: "casino", page: params[:page])
+    model = "Medium::#{params[:media_type]}".constantize
+    response = model.search_and_create(search_params)
 
-    if response[:success]
-      media = Medium::Movie.find_or_create_from_api(response[:results])
-      @media = Kaminari.paginate_array(media, total_count: response[:total_results]).page(params[:page])
-    else
+    @media = Kaminari.paginate_array(response[:media], total_count: response[:total_count]).page(permitted_params[:page])
+  end
 
-    end
+  private
+  def permitted_params
+    params.permit(:query, :page, :media_type, :search)
+  end
+
+  def search_params
+    permitted_params.slice(:query, :page)
+  end
+
+  def set_media_type
+    params[:media_type] ||= "Movie"
   end
 end

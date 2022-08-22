@@ -23,16 +23,11 @@ RSpec.describe TmdbClient, type: :model do
         let(:body)     { "{\"page\":1,\"results\":[1,2,3],\"success\":true}" }
         let(:response) { response_class.new("200", body) }
 
-        context "and given a block" do
-          it "returns with the customized response body" do
-            expect(described_class.response_handler(response){|resp| resp[:results]}).to eq([1,2,3])
-          end
-        end
 
         context "and no block given" do
-          let(:expected_error) { JSON.parse(body) }
+          let(:expected_response) { JSON.parse(body) }
           it "returns with the response body" do
-            expect(described_class.response_handler(response)).to eq(expected_error)
+            expect(described_class.response_handler(response)).to eq(expected_response)
           end
         end
       end
