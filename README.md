@@ -114,29 +114,70 @@ Indexes:
 * "media_genres_pkey" PRIMARY KEY, btree (id)
 * "custom_uniq_index_1" UNIQUE, btree (tmdb_medium_id, tmdb_genre_id)
 
-# Getting started
+# Getting Started
 
-## TODO
+Welcome to TMDB application. I assume you're a new contributor looking to getting
+started.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Fork the `tmdb` repository to your own account by clicking "Fork" up in the top right of this screen.
 
-* Ruby version
+Check out the source code.
 
-* System dependencies
+    cd ~/workspace
+    git clone git@github.com:YOUR_USERNAME/tmdb.git
+    cd tmdb
+    git remote add upstream git@github.com:kozmasz/tmdb.git
 
-* Configuration
 
-* Database creation
+### System dependencies
 
-* Database initialization
+* Ruby 3.1.0
+    * [Get Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* PostgreSQL
+    * [Get Postgres](https://www.postgresql.org/download/)
 
-* How to run the test suite
+### Configuration
 
-* Services (job queues, cache servers, search engines, etc.)
+You need to set your environment variables. I use [direnv](https://direnv.net/) for it.
 
-* Deployment instructions
+* Install direnv
+* Set your `.envrc` file in your `tmdb` folder
+* Set the required environment variables in your `.envrc` file:
 
-* ...
+```bash
+export TMDB_API_KEY=your_api_token
+export TMDB_BEARER_TOKEN=your_bearer_token
+export TMDB_AUTH_TYPE=('bearer_token' or 'api_key')
+```
+* Save it
+* Run `direnv allow`
+
+Click [here](https://developers.themoviedb.org/3/getting-started/introduction) to know more about these tokens.
+
+---
+* Run `gem install bundler`
+* Run `bundle`
+
+### Database creation
+
+* Check your `config/database.yml`
+* Run `bundle exec rails db:create`
+
+### Database initialization
+
+* Run `bundle exec rails db:migrate db:seed`
+
+### Run the application
+
+* Run `bundle exec rails server`
+* Open `http://localhost:3000/` from your browser
+
+### Run tests
+
+* Run `bundle exec rspec`
+
+### Deployed to Heroku
+
+* Please visit to https://tmdb-kozmasz.herokuapp.com
