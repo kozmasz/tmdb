@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: media
+#
+#  id                :bigint           not null, primary key
+#  tmdb_id           :integer          not null
+#  media_type        :string           not null
+#  adult             :boolean          default(FALSE), not null
+#  release_date      :date
+#  title             :string
+#  original_title    :string
+#  original_language :string
+#  overview          :text
+#  vote_average      :float
+#  vote_count        :integer
+#  poster_path       :string
+#  popularity        :float
+#  backdrop_path     :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Medium, type: :model do
@@ -19,13 +40,6 @@ RSpec.describe Medium, type: :model do
   describe "VALIDATIONS" do
     it { is_expected.to validate_presence_of :tmdb_id }
     it { is_expected.to validate_presence_of :media_type }
-    it { is_expected.to validate_presence_of :release_date }
-    it { is_expected.to validate_presence_of :title }
-    it { is_expected.to validate_presence_of :original_title }
-    it { is_expected.to validate_presence_of :original_language }
-    it { is_expected.to validate_presence_of :overview }
-    it { is_expected.to validate_presence_of :vote_average }
-    it { is_expected.to validate_presence_of :vote_count }
   end
 
   describe "ASSOCIATIONS" do

@@ -6,14 +6,14 @@
 #  tmdb_id           :integer          not null
 #  media_type        :string           not null
 #  adult             :boolean          default(FALSE), not null
-#  release_date      :date             not null
-#  title             :string           not null
-#  original_title    :string           not null
-#  original_language :string           not null
-#  overview          :text             not null
-#  poster_path       :string           not null
-#  vote_average      :float            not null
-#  vote_count        :integer          not null
+#  release_date      :date
+#  title             :string
+#  original_title    :string
+#  original_language :string
+#  overview          :text
+#  vote_average      :float
+#  vote_count        :integer
+#  poster_path       :string
 #  popularity        :float
 #  backdrop_path     :string
 #  created_at        :datetime         not null
@@ -26,16 +26,15 @@ class Medium < ApplicationRecord
 
   # CONSTANTS
 
-  MANDATORY_ATTRIBUTES = [
+  WHITELISTED_PARAMS = [
     "tmdb_id", "media_type", "release_date", "title", "original_title",
-    "original_language", "overview", "vote_average", "vote_count"
+    "original_language", "overview", "vote_average", "vote_count",
+    "genre_ids", "popularity", "backdrop_path", "original_name", "name", "first_air_date", "poster_path"
   ].freeze
-
-  WHITELISTED_PARAMS = (MANDATORY_ATTRIBUTES + ["genre_ids", "popularity", "backdrop_path", "original_name", "name", "first_air_date", "poster_path"]).freeze
 
   # VALIDATIONS
 
-  validates *MANDATORY_ATTRIBUTES, presence: true
+  validates :tmdb_id, :media_type, presence: true
 
   # ASSOCIATIONS
 
