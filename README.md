@@ -114,6 +114,21 @@ Indexes:
 * "media_genres_pkey" PRIMARY KEY, btree (id)
 * "custom_uniq_index_1" UNIQUE, btree (tmdb_medium_id, tmdb_genre_id)
 
+### media_finders table
+
+|      Column       |              Type              | Collation | Nullable |                  Default                  |
+|-------------------|--------------------------------|-----------|----------|-------------------------------------------|
+|id                 | bigint                         |           | not null | nextval('media_finders_id_seq'::regclass) |
+|url                | character varying              |           | not null |                                           |
+|search_class_name  | character varying              |           | not null |                                           |
+|search_params      | jsonb                          |           |          | '{}'::jsonb                               |
+|view_count         | integer                        |           |          | 0                                         |
+|created_at         | timestamp(6) without time zone |           | not null |                                           |
+|updated_at         | timestamp(6) without time zone |           | not null |                                           |
+
+Indexes:
+* "media_finders_pkey" PRIMARY KEY, btree (id)
+
 # Getting Started
 
 Welcome to TMDB application. I assume you're a new contributor looking to getting

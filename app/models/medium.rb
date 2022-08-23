@@ -56,20 +56,6 @@ class Medium < ApplicationRecord
         end
       end
     end
-
-    def search_and_create query_params = {}
-      search_class = "TmdbClient::Search::#{class_name}".constantize
-      response = search_class.get(query_params)
-      if response[:success]
-        { media: find_or_create_from_api(response[:results]), total_count: response[:total_results] }
-      else
-        { media: [], total_count: 0 }
-      end
-    end
-
-    def class_name
-      name.demodulize
-    end
   end
 
   # INSTANCE_METHODS
